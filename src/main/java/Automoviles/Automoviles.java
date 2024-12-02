@@ -4,24 +4,27 @@
  */
 package Automoviles;
 
+import ec.edu.espoch.practicacarros.enumeraciones.CarType;
+import ec.edu.espoch.practicacarros.enumeraciones.FuelTypes;
+
 /**
  *
  * @author USUARIO
  */
 public class Automoviles {
-   
+
     private String Brand;
     private int model;
     private double engine;
-    private String gasoline;
-    private String car;
+    private FuelTypes gasoline;
+    private CarType car;
     private int doors;
     private int seats;
     private double maximumSpeed;
     private String color;
     private double currentSpeed;
 
-    public Automoviles(String Brand, int model, double engine, String gasoline, String car, int doors, int seats, double maximumSpeed, String color, double currentSpeed) {
+    public Automoviles(String Brand, int model, double engine, FuelTypes gasoline, CarType car, int doors, int seats, double maximumSpeed, String color, double currentSpeed) {
         this.Brand = Brand;
         this.model = model;
         this.engine = engine;
@@ -58,19 +61,19 @@ public class Automoviles {
         this.engine = engine;
     }
 
-    public String getGasoline() {
+    public FuelTypes getGasoline() {
         return gasoline;
     }
 
-    public void setGasoline(String gasoline) {
+    public void setGasoline(FuelTypes gasoline) {
         this.gasoline = gasoline;
     }
 
-    public String getCar() {
+    public CarType getCar() {
         return car;
     }
 
-    public void setCar(String car) {
+    public void setCar(CarType car) {
         this.car = car;
     }
 
@@ -114,6 +117,9 @@ public class Automoviles {
         this.currentSpeed = currentSpeed;
     }
 
+   
+
+    
     public void showAttributes() {
         System.out.println("Brand           : Year " + Brand);
         System.out.println("Model           :" + model);
@@ -124,5 +130,61 @@ public class Automoviles {
         System.out.println("Seats           :" + seats);
         System.out.println("Maximunm Speed  :" + maximumSpeed + " Km/h");
         System.out.println("Car Color       :" + color);
+    }
+    private double time1;
+
+    public double getTime1() {
+        return time1;
+    }
+
+    public void setTime1(double time1) {
+        this.time1 = time1;
+    }
+
+    public void accelerate(double value1) {
+        if (value1 > 0) {
+            if ((currentSpeed + value1) <= maximumSpeed) {
+                currentSpeed = currentSpeed + value1;
+
+            } else {
+                System.out.println("the speed reached must be less, reduces speed");
+            }
+        } else {
+            System.out.println("Speed ​​cannot be negative, please enter a positive value");
+        }
+
+    }
+
+    public void decelerate(double value2) {
+        if (value2 > 0) {
+            if ((currentSpeed - value2) > 0) {
+                currentSpeed = currentSpeed - value2;
+
+            } else {
+                System.out.println("Speed ​​cannot be negative, please enter a positive value");
+            }
+        } else {
+            System.out.println("Speed ​​cannot be negative, please enter a positive value");
+        }
+
+    }
+
+    public void time(double distance) {
+
+        if (currentSpeed > 0) {
+            time1 = (distance / currentSpeed);
+
+        } else {
+
+            System.out.println("The current speed cannot be zero, therefore there is no estimated time");
+
+        }
+
+    }
+
+    public void curb() {
+        currentSpeed = 0;
+        System.out.println("The braking speed is : " + currentSpeed + "km/h");
+
     }
 }
